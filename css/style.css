@@ -628,6 +628,11 @@ button {
   gap: 1.2rem;
   flex-wrap: wrap;
 }
+.hero-secondary-btns {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
 .hero-meta-bar {
   display: flex;
   gap: 2.5rem;
@@ -1345,7 +1350,8 @@ button {
 }
 
 /* ============================================================
-   RESPONSIVE DESIGN & CROSS-DEVICE ADAPTATIONS
+   RESPONSIVE DESIGN & MOBILE DEVICE ADAPTATION
+   Pixel-Perfect Scaling for Mobile Phones, Tablets & Desktops
    ============================================================ */
 
 /* ---- Large Tablets / Small Laptops (<= 1100px) ---- */
@@ -1359,58 +1365,63 @@ button {
   .contact-grid { grid-template-columns: 1fr; gap: 3.5rem; }
 }
 
-/* ---- Tablets & Mobile Devices (<= 860px) ---- */
+/* ---- Tablets & Large Mobiles (<= 860px) ---- */
 @media (max-width: 860px) {
   /* Navigation */
   .nav-links, .nav-actions { display: none; }
   .hamburger { display: flex; }
-  .navbar { padding: 1rem 5%; }
-  .navbar.scrolled { padding: 0.8rem 5%; }
-  .nav-logo-img { height: 42px; }
-  .nav-brand-title { font-size: 1.5rem; }
+  .navbar { padding: 0.85rem 5%; }
+  .navbar.scrolled { padding: 0.75rem 5%; }
+  .nav-logo-img { height: 40px; }
+  .nav-brand-title { font-size: 1.45rem; }
 
-  /* Hero Mobile */
-  .hero-section {
-    background-attachment: scroll !important;
-    min-height: 90vh;
-    padding: 8rem 5% 4.5rem;
+  /* Inner Pages Hero Spacing */
+  section[style*="padding-top: 10rem"] {
+    padding-top: 5.5rem !important;
+    padding-bottom: 2.2rem !important;
   }
-  .hero-desc { font-size: 1.05rem; }
 
-  /* Section Headers */
-  .sec-pad { padding: 4.5rem 0; }
-  .sec-pad-sm { padding: 3rem 0; }
+  /* Section Padding */
+  .sec-pad { padding: 3.8rem 0; }
+  .sec-pad-sm { padding: 2.4rem 0; }
   .section-top-flex {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 2.2rem;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
   }
   .section-quote {
     text-align: left;
     max-width: 100%;
-    font-size: 1.05rem;
+    font-size: 1rem;
+  }
+  .heading-section {
+    font-size: clamp(2rem, 7.5vw, 2.7rem) !important;
+    line-height: 0.98 !important;
+  }
+  .heading-card {
+    font-size: 1.45rem !important;
   }
 
   /* 5-Panel Interactive Vertical Card Deck (Disciplines & Coaches) */
   .accordion-strip {
-    flex-direction: column;
+    flex-direction: column !important;
     height: auto !important;
-    gap: 8px;
-    background-color: transparent;
-    overflow: visible;
+    gap: 8px !important;
+    background-color: transparent !important;
+    overflow: visible !important;
   }
   .accordion-panel {
-    width: 100%;
-    height: 76px;
-    min-height: 76px;
-    max-height: 76px;
+    width: 100% !important;
+    height: 68px !important;
+    min-height: 68px !important;
+    max-height: 68px !important;
     flex: none !important;
     border-radius: 4px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background-color: #121212;
-    transition: max-height 0.45s cubic-bezier(0.25, 1, 0.3, 1),
-                min-height 0.45s cubic-bezier(0.25, 1, 0.3, 1),
+    transition: max-height 0.4s cubic-bezier(0.25, 1, 0.3, 1),
+                min-height 0.4s cubic-bezier(0.25, 1, 0.3, 1),
                 border-color 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -1422,24 +1433,23 @@ button {
     height: 100%;
     object-fit: cover;
     filter: grayscale(100%) brightness(0.25);
-    transition: filter 0.45s ease, transform 0.45s ease;
+    transition: filter 0.4s ease;
   }
   .accordion-panel .acc-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(90deg, rgba(8, 8, 8, 0.94) 0%, rgba(8, 8, 8, 0.75) 60%, rgba(8, 8, 8, 0.5) 100%);
     z-index: 1;
-    transition: background 0.45s ease;
   }
 
-  /* Collapsed Bar State: Horizontal Number + Title + Expand Icon */
+  /* Collapsed Bar: Number + Horizontal Title + Arrow */
   .accordion-panel .acc-number {
     position: absolute;
-    left: 1.2rem;
+    left: 1.1rem;
     top: 50%;
     bottom: auto;
     transform: translateY(-50%);
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 800;
     color: var(--red);
     z-index: 2;
@@ -1447,76 +1457,75 @@ button {
   .accordion-panel .acc-vertical-label {
     display: flex !important;
     align-items: center;
-    position: absolute;
-    left: 4.2rem;
-    top: 50%;
-    bottom: auto;
+    position: absolute !important;
+    left: 3.8rem !important;
+    top: 50% !important;
+    bottom: auto !important;
     transform: translateY(-50%) rotate(0deg) !important;
     transform-origin: center left;
-    font-size: 1.15rem;
+    font-size: 1.05rem !important;
     font-weight: 800;
     letter-spacing: 0.1em;
-    color: var(--white);
+    color: var(--white) !important;
     z-index: 2;
-    opacity: 1;
+    opacity: 1 !important;
     white-space: nowrap;
     transition: opacity 0.3s ease;
   }
   .accordion-panel::after {
     content: '+';
     position: absolute;
-    right: 1.4rem;
+    right: 1.2rem;
     top: 50%;
     transform: translateY(-50%);
     font-family: var(--font-heading);
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     color: rgba(255, 255, 255, 0.5);
     z-index: 2;
-    transition: transform 0.4s ease, color 0.3s ease;
+    transition: transform 0.35s ease, color 0.3s ease;
   }
 
   /* Expanded Active State on Mobile */
   .accordion-panel.active {
-    height: auto;
-    min-height: 400px;
-    max-height: 520px;
-    border-color: rgba(227, 27, 35, 0.6);
+    height: auto !important;
+    min-height: 380px !important;
+    max-height: 480px !important;
+    border-color: rgba(227, 27, 35, 0.6) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
   }
   .accordion-panel.active::after {
     content: '−';
-    transform: translateY(-50%);
     color: var(--red);
-    top: 1.8rem;
-    right: 1.4rem;
+    top: 1.6rem;
+    right: 1.2rem;
+    transform: none;
   }
   .accordion-panel.active .acc-bg-img {
     filter: grayscale(0%) brightness(0.68);
-    transform: scale(1.02);
   }
   .accordion-panel.active .acc-overlay {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.35) 100%);
   }
   .accordion-panel.active .acc-vertical-label {
-    opacity: 0;
-    pointer-events: none;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
   .accordion-panel.active .acc-number {
-    top: 1.8rem;
-    left: 1.4rem;
+    top: 1.6rem;
+    left: 1.2rem;
     transform: none;
     color: var(--red);
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
   .accordion-panel .acc-expanded-content {
     position: absolute;
-    bottom: 1.6rem;
-    left: 1.4rem;
-    right: 1.4rem;
+    bottom: 1.4rem;
+    left: 1.2rem;
+    right: 1.2rem;
     z-index: 3;
     opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+    transform: translateY(12px);
+    transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
     pointer-events: none;
   }
   .accordion-panel.active .acc-expanded-content {
@@ -1525,171 +1534,274 @@ button {
     pointer-events: auto;
   }
   .accordion-panel.active .acc-title {
-    font-size: 2.2rem;
-    margin-bottom: 0.4rem;
+    font-size: 1.9rem;
+    margin-bottom: 0.3rem;
   }
   .accordion-panel.active .acc-desc {
-    font-size: 0.88rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin-bottom: 0.85rem;
     max-width: 100%;
   }
 
   /* Day Tabs Nav on Mobile */
+  .plan-week-wrap {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
   .day-tabs-nav {
     display: flex;
-    gap: 1.2rem;
+    gap: 0.8rem;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.5rem;
   }
   .day-tabs-nav::-webkit-scrollbar {
     display: none;
   }
   .day-tab-btn {
     white-space: nowrap;
-    font-size: 0.85rem;
-    padding: 0.4rem 0.6rem;
+    font-size: 0.82rem;
+    padding: 0.3rem 0.5rem;
+    flex-shrink: 0;
   }
   .sched-row {
-    padding: 1.1rem 1rem;
+    padding: 1rem 0.9rem;
+  }
+
+  /* Pricing */
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .pricing-card {
+    padding: 2.2rem 1.6rem;
+  }
+  .pricing-card.featured {
+    padding: 2.5rem 1.8rem;
+    transform: none;
+  }
+  .pricing-amount {
+    font-size: 3.8rem;
   }
 
   /* Gallery Grid & Slider */
   .gallery-work-grid { grid-template-columns: repeat(2, 1fr); }
   .gallery-slider-wrap {
-    height: 380px;
-    margin-bottom: 3rem;
+    height: 360px;
+    margin-bottom: 2.5rem;
   }
   .gallery-slide-caption {
-    bottom: 1.5rem;
-    left: 1.4rem;
-    right: 1.4rem;
+    bottom: 1.2rem;
+    left: 1.2rem;
+    right: 1.2rem;
   }
   .slider-arrow-btn {
-    width: 42px;
-    height: 42px;
-    font-size: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 0.95rem;
   }
-  .slider-arrow-btn.prev-btn { left: 0.8rem; }
-  .slider-arrow-btn.next-btn { right: 0.8rem; }
+  .slider-arrow-btn.prev-btn { left: 0.6rem; }
+  .slider-arrow-btn.next-btn { right: 0.6rem; }
   .slider-dots {
-    bottom: 1rem;
-    right: 1.4rem;
+    bottom: 0.9rem;
+    right: 1.2rem;
   }
 
   /* Contact and Forms */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
   .enquiry-box {
-    padding: 2.2rem 1.6rem;
+    padding: 2rem 1.4rem;
   }
   .form-group input,
   .form-group select,
   .form-group textarea {
-    font-size: 16px !important; /* Prevents auto-zoom in iOS Safari */
+    font-size: 16px !important;
+    padding: 0.85rem 1rem;
   }
   .slot-check {
-    min-height: 48px; /* Clean mobile touch target */
+    min-height: 48px;
   }
 
-  /* Floating WhatsApp Button */
+  /* Floating WhatsApp Button (Guaranteed Clearance Above System Gestures) */
   .wa-float-btn {
-    bottom: max(1.2rem, calc(env(safe-area-inset-bottom, 0px) + 1.2rem));
-    right: 1.2rem;
-    width: 54px;
-    height: 54px;
-    font-size: 1.6rem;
+    bottom: 24px !important;
+    right: 20px !important;
+    width: 52px !important;
+    height: 52px !important;
+    font-size: 1.6rem !important;
+    z-index: 9999;
   }
 }
 
-/* ---- Small Screens & Mobile Phones (<= 580px) ---- */
-@media (max-width: 580px) {
-  /* Hero Button & Stats Stacking */
+/* ---- Small Screens & Mobile Phones (<= 640px) ---- */
+@media (max-width: 640px) {
+  /* Hero Section: Perfectly Balanced for Mobile Viewport */
   .hero-section {
-    padding: 7rem 5% 3.5rem;
+    background-attachment: scroll !important;
+    min-height: 100svh;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+    padding: 4.8rem 5% 1.8rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+  }
+  .hero-motto {
+    font-size: 0.76rem;
+    letter-spacing: 0.22em;
+    margin-bottom: 0.45rem;
+  }
+  .hero-motto::before {
+    width: 20px;
+  }
+  .heading-hero {
+    font-size: clamp(2.1rem, 8.5vw, 3.1rem) !important;
+    line-height: 0.98 !important;
+    margin-bottom: 0.65rem !important;
+    letter-spacing: 0.01em;
+  }
+  .hero-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1.15rem !important;
+    color: #D5D5D5;
+    max-width: 100%;
+  }
+
+  /* Hero Actions: 1 Main CTA + 2 Secondary in a Clean 2-Column Grid */
   .hero-actions {
+    display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 0.9rem;
+    gap: 0.6rem;
   }
-  .hero-actions .btn {
+  .hero-btn-main {
     width: 100%;
+    padding: 0.82rem 1.2rem;
+    font-size: 0.84rem;
     text-align: center;
   }
+  .hero-secondary-btns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 0.55rem;
+  }
+  .hero-secondary-btns .btn {
+    width: 100%;
+    padding: 0.68rem 0.4rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* Hero Meta Stats Bar: Compact 2x2 Grid */
   .hero-meta-bar {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem 1rem;
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
+    gap: 0.75rem 0.9rem;
+    margin-top: 1.15rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .hero-meta-item h5 {
+    font-size: 1.2rem !important;
+    line-height: 1;
+    margin-bottom: 0.15rem;
+  }
+  .hero-meta-item p {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.14em;
   }
 
   /* Schedule Row Stacking */
   .sched-row {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.4rem;
+    gap: 0.35rem;
+    padding: 0.9rem 0.75rem;
   }
   .sched-time-title {
     flex-direction: row;
     align-items: baseline;
-    gap: 1rem;
+    gap: 0.85rem;
     width: 100%;
   }
   .sched-time {
-    min-width: 75px;
-    font-size: 1.6rem;
+    min-width: 68px;
+    font-size: 1.45rem;
   }
   .sched-title {
-    font-size: 1.05rem;
+    font-size: 0.98rem;
     flex: 1;
   }
   .sched-target {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     padding-left: 0;
   }
 
   /* Form Slots */
   .slots-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55rem;
   }
 
   /* Gallery Grid & Slider */
   .gallery-work-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.9rem;
   }
   .work-item {
-    height: 380px;
+    height: 340px;
   }
   .work-item.tall {
-    height: 420px;
+    height: 380px;
   }
   .gallery-slider-wrap {
-    height: 300px;
+    height: 280px;
+    margin-bottom: 2rem;
   }
   .gallery-slide-caption h3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+  }
+
+  /* Map */
+  iframe[title="Warriors Gym Location"] {
+    height: 280px !important;
   }
 
   /* Footer */
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
+    margin-bottom: 2rem;
   }
   .site-footer {
-    padding: 3.5rem 5% 2rem;
+    padding: 3rem 5% 1.8rem;
   }
 }
 
 /* ---- Ultra Compact Screens (<= 380px) ---- */
 @media (max-width: 380px) {
   .nav-brand-sub { display: none; }
-  .heading-hero { font-size: 2.8rem; }
-  .heading-section { font-size: 2.4rem; }
-  .accordion-panel .acc-vertical-label { font-size: 1rem; left: 3.6rem; }
-  .accordion-panel .acc-number { left: 1rem; }
+  .heading-hero { font-size: 1.95rem !important; }
+  .heading-section { font-size: 1.85rem !important; }
+  .accordion-panel .acc-vertical-label { font-size: 0.95rem !important; left: 3.4rem !important; }
+  .accordion-panel .acc-number { left: 0.9rem; }
+  .slots-grid { grid-template-columns: 1fr; }
+  .hero-secondary-btns { grid-template-columns: 1fr; }
 }
 
 /* ---- Cinematic Combat Intro Mobile Adaptation ---- */
@@ -1699,25 +1811,25 @@ button {
     height: 100vh;
   }
   .intro-slide-text {
-    font-size: clamp(2.4rem, 11vw, 4.6rem);
+    font-size: clamp(2.2rem, 10vw, 4.2rem);
     line-height: 0.95;
     padding: 0 1rem;
   }
   .intro-slam-title {
-    font-size: clamp(2.4rem, 11vw, 4.2rem);
+    font-size: clamp(2.2rem, 10vw, 3.8rem);
   }
   .intro-slam-sub {
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
   }
   .intro-logo-reveal img {
-    width: 100px;
+    width: 95px;
   }
   .intro-skip-badge {
-    bottom: max(1.2rem, env(safe-area-inset-bottom, 1.2rem));
-    right: 1.2rem;
-    font-size: 0.7rem;
-    padding: 0.4rem 0.9rem;
+    bottom: max(20px, env(safe-area-inset-bottom, 20px));
+    right: 18px;
+    font-size: 0.68rem;
+    padding: 0.35rem 0.8rem;
   }
 }
 
@@ -1725,7 +1837,7 @@ button {
 @media (hover: none) {
   .accordion-panel:hover:not(.active) {
     flex: none;
-    min-height: 76px;
+    min-height: 68px;
   }
   .work-item:hover img {
     filter: grayscale(80%) brightness(0.7);
